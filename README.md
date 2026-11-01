@@ -5,7 +5,9 @@ OSS Assignment 4-1: REST API-Based CRUD Service with JavaScript
 ## 현재 진행 상황
 
 프로젝트 기본 파일과 홈 / 도서 관리 페이지 연결을 준비했습니다.
-MockAPI 연결, CRUD, 검색, 입력 검증 및 배포는 아직 구현하지 않았습니다.
+MockAPI GET 요청과 연결 상태 표시를 구현했습니다.
+현재 API는 학생 데이터(name, major, email, grade)를 반환합니다.
+도서용 리소스 연결, 도서 CRUD, 검색, 입력 검증 및 배포는 아직 구현하지 않았습니다.
 
 ## 실행
 
@@ -17,7 +19,7 @@ HTML, CSS, Vanilla JavaScript를 사용하며 별도 설치는 필요하지 않�
 - `index.html`: 서비스 소개
 - `crud.html`: 도서 관리 화면
 - `style.css`: 기본 스타일
-- `script.js`: API 및 화면 동작 구현 예정
+- `script.js`: MockAPI 조회 및 로딩 / 성공 / 실패 상태 표시
 
 ## Service
 
@@ -31,7 +33,8 @@ HTML, CSS, Vanilla JavaScript를 사용하며 별도 설치는 필요하지 않�
 
 - GitHub: https://github.com/2026-2-OSS/assign09-c02-22101046
 - Vercel: 배포 전
-- MockAPI Endpoint: 생성 및 연결 전
+- MockAPI Endpoint: https://69182cef21a96359486efe99.mockapi.io/students/students
+- 현재는 학생 데이터 연결 확인용이며 도서 데이터로 사용하지 않습니다.
 
 ## Weekly Review
 
@@ -42,9 +45,10 @@ HTML, CSS, Vanilla JavaScript를 사용하며 별도 설치는 필요하지 않�
 ### AI / Search Usage
 
 - 도구: OpenAI Codex
-- 목적: 초기 프로젝트 파일 생성 및 Git 작업 보조
+- 목적: 초기 프로젝트 파일 생성, MockAPI 연결 및 Git 작업 보조
 - 반영 내용: 초기 HTML 두 페이지, 기본 CSS, JavaScript 주석, README 및 .gitignore
-- 현재 초기 파일의 코드 초안은 AI가 생성했습니다. 핵심 CRUD 기능은 아직 없습니다.
+- 추가 반영 내용: fetch(), HTTP 응답 및 배열 형식 확인, 연결 상태 표시
+- 현재 초기 파일과 API 연결 코드 초안은 AI가 생성했습니다. 핵심 도서 CRUD 기능은 아직 없습니다.
 - 직접 수정한 내용 / 배운 점: 작업 후 본인이 작성할 예정입니다.
 - 최종 AI 코드 기여율(%): 전체 구현 완료 후 실제 반영 내역을 기준으로 본인이 산정할 예정입니다.
 
