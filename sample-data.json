@@ -1,7 +1,7 @@
 [
   {
     "id": "1",
-    "borrower": "독자A",
+    "borrower": "신태현",
     "bookTitle": "어린 왕자",
     "borrowedAt": "2026-10-01",
     "loanDays": 14,
@@ -9,7 +9,7 @@
   },
   {
     "id": "2",
-    "borrower": "독자B",
+    "borrower": "캐롤",
     "bookTitle": "동물농장",
     "borrowedAt": "2026-10-20",
     "loanDays": 21,
@@ -17,7 +17,7 @@
   },
   {
     "id": "3",
-    "borrower": "독자C",
+    "borrower": "mike",
     "bookTitle": "데미안",
     "borrowedAt": "2026-10-05",
     "loanDays": 14,
@@ -25,7 +25,7 @@
   },
   {
     "id": "4",
-    "borrower": "독자D",
+    "borrower": "MJ",
     "bookTitle": "모모",
     "borrowedAt": "2026-10-10",
     "loanDays": 14,
@@ -33,7 +33,7 @@
   },
   {
     "id": "5",
-    "borrower": "독자E",
+    "borrower": "Spiderman",
     "bookTitle": "소나기",
     "borrowedAt": "2026-10-15",
     "loanDays": 7,
@@ -41,7 +41,7 @@
   },
   {
     "id": "6",
-    "borrower": "독자F",
+    "borrower": "김둘리",
     "bookTitle": "노인과 바다",
     "borrowedAt": "2026-10-25",
     "loanDays": 14,
@@ -49,10 +49,18 @@
   },
   {
     "id": "7",
-    "borrower": "독자G",
+    "borrower": "홍길동",
     "bookTitle": "오만과 편견",
     "borrowedAt": "2026-10-28",
     "loanDays": 21,
+    "status": "대출중"
+  },
+  {
+    "id": "8",
+    "borrower": "김동로",
+    "bookTitle": "아메리카노",
+    "borrowedAt": "2026-11-12",
+    "loanDays": 14,
     "status": "대출중"
   }
 ]
