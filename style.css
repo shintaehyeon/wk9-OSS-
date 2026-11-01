@@ -1,0 +1,31 @@
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #243240;
+    background: #f4f6f8;
+}
+
+header, nav, main, footer {
+    padding: 20px;
+}
+
+header {
+    color: white;
+    background: #24693d;
+}
+
+header h1 { margin: 0; }
+nav { background: #e6f1e8; }
+nav a { margin-right: 16px; }
+a { color: #24693d; }
+
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    background: white;
+}
+
+footer { text-align: center; }
