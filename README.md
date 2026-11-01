@@ -5,9 +5,9 @@ OSS Assignment 4-1: REST API-Based CRUD Service with JavaScript
 ## 현재 진행 상황
 
 프로젝트 기본 파일과 홈 / 도서 관리 페이지 연결을 준비했습니다.
-MockAPI GET 요청, 연결 상태 표시와 학생 데이터 표 출력을 구현했습니다.
-현재 API는 학생 데이터(name, major, email, grade)를 반환합니다.
-도서용 리소스 연결, 도서 CRUD, 검색, 입력 검증 및 배포는 아직 구현하지 않았습니다.
+MockAPI GET 요청, 연결 상태 표시와 대출 기록 표 출력을 구현했습니다.
+현재 API는 대출 기록(id, borrower, bookTitle, borrowedAt, loanDays, status)을 반환합니다.
+대출 기록 등록·수정·삭제, 검색, 입력 검증 및 배포는 아직 구현하지 않았습니다.
 
 ## 실행
 
@@ -27,14 +27,14 @@ HTML, CSS, Vanilla JavaScript를 사용하며 별도 설치는 필요하지 않�
 - 예정 Field: `id`, `title`, `author`, `category`, `price`
 - 예정 기능: 조회 / 등록 / 수정 / 삭제 / 제목 검색
 - 예정 검증: 제목 2자 이상, 저자 공백 금지, 가격은 0 이상 숫자
-- 가상 도서 데이터만 사용
+- 가상 대출 데이터만 사용
 
 ## Deployment
 
 - GitHub: https://github.com/2026-2-OSS/assign09-c02-22101046
 - Vercel: 배포 전
 - MockAPI Endpoint: https://69182cef21a96359486efe99.mockapi.io/students/students
-- 현재는 학생 데이터 연결 확인용이며 도서 데이터로 사용하지 않습니다.
+- 리소스 이름은 students를 유지하며 대출 기록을 저장합니다.
 
 ## Weekly Review
 
