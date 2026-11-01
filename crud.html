@@ -14,6 +14,27 @@
     </nav>
     <main>
         <section>
+            <h2>대출 등록</h2>
+            <p>실제 개인정보 대신 가명을 입력해 주세요.</p>
+            <form id="loanForm">
+                <label for="borrower">대출자</label>
+                <input id="borrower" name="borrower" type="text" required minlength="2" placeholder="독자A">
+                <label for="bookTitle">도서명</label>
+                <input id="bookTitle" name="bookTitle" type="text" required minlength="2">
+                <label for="borrowedAt">대출일</label>
+                <input id="borrowedAt" name="borrowedAt" type="date" required>
+                <label for="loanDays">대출 기간(1~30일)</label>
+                <input id="loanDays" name="loanDays" type="number" min="1" max="30" step="1" value="14" required>
+                <label for="status">반납 상태</label>
+                <select id="status" name="status">
+                    <option value="대출중">대출중</option>
+                    <option value="반납완료">반납완료</option>
+                </select>
+                <button id="submitLoan" type="submit">대출 등록</button>
+                <p id="formMessage" role="status"></p>
+            </form>
+        </section>
+        <section>
             <h2>도서 대출·반납 목록</h2>
             <p>대출 기록과 반납 상태를 확인할 수 있습니다.</p>
             <p id="message" role="status">MockAPI에 연결 중입니다...</p>
