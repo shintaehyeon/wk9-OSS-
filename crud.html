@@ -14,9 +14,18 @@
     </nav>
     <main>
         <section>
-            <h2>도서 목록</h2>
+            <h2>MockAPI 데이터 목록</h2>
+            <p>현재 연결된 리소스는 학생 데이터입니다.</p>
             <p id="message" role="status">MockAPI에 연결 중입니다...</p>
-            <div id="bookList"></div>
+            <div class="table-scroll">
+                <table>
+                    <caption>연결된 학생 데이터</caption>
+                    <thead>
+                        <tr><th scope="col">ID</th><th scope="col">이름</th><th scope="col">전공</th><th scope="col">이메일</th><th scope="col">학년</th></tr>
+                    </thead>
+                    <tbody id="apiList"></tbody>
+                </table>
+            </div>
         </section>
     </main>
     <footer><p>22101046 신태현 | OSS Assignment 4-1</p></footer>

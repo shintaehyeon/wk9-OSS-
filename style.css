@@ -29,3 +29,9 @@ main {
 }
 
 footer { text-align: center; }
+
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+caption { text-align: left; font-weight: bold; margin-bottom: 8px; }
+th, td { padding: 10px; border: 1px solid #d6dfd8; text-align: left; }
+th { background: #e6f1e8; }

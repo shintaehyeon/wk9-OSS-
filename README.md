@@ -5,7 +5,7 @@ OSS Assignment 4-1: REST API-Based CRUD Service with JavaScript
 ## 현재 진행 상황
 
 프로젝트 기본 파일과 홈 / 도서 관리 페이지 연결을 준비했습니다.
-MockAPI GET 요청과 연결 상태 표시를 구현했습니다.
+MockAPI GET 요청, 연결 상태 표시와 학생 데이터 표 출력을 구현했습니다.
 현재 API는 학생 데이터(name, major, email, grade)를 반환합니다.
 도서용 리소스 연결, 도서 CRUD, 검색, 입력 검증 및 배포는 아직 구현하지 않았습니다.
 
