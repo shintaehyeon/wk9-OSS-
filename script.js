@@ -9,6 +9,11 @@ const cancelEdit = document.getElementById('cancelEdit');
 const formTitle = document.getElementById('formTitle');
 const fields = ['borrower', 'bookTitle', 'borrowedAt', 'loanDays', 'status'];
 const inputs = loanForm.elements;
+const searchInput = document.getElementById('searchInput');
+const searchMessage = document.getElementById('searchMessage');
+// 검색용 목록이며 실제 데이터 저장은 MockAPI에서 수행
+let allLoans = [];
+let isDeleting = false;
 // 수정 중인 기록의 ID 저장 (null이면 새 기록 등록)
 let editingId = null;
 
@@ -23,7 +28,7 @@ function resetLoanForm() {
 
 // 수정 버튼을 누른 기록의 값을 폼에 채우는 기능
 function startEditing(loan) {
-    if (submitLoan.disabled) return;
+    if (submitLoan.disabled || isDeleting) return;
     editingId = String(loan.id);
     for (const field of fields) {
         inputs[field].value = loan[field];
@@ -35,7 +40,7 @@ function startEditing(loan) {
     inputs.borrower.focus();
 }
 
-// 대출 목록을 표로 출력하고 각 행에 수정 버튼을 만드는 기능
+// 대출 목록을 표로 출력하고 수정·삭제 버튼을 만드는 기능
 function renderLoans(loans) {
     apiList.replaceChildren();
     for (const loan of loans) {
@@ -53,8 +58,53 @@ function renderLoans(loans) {
         editButton.disabled = loan.id == null;
         editButton.addEventListener('click', () => startEditing(loan));
         actions.appendChild(editButton);
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.textContent = '삭제';
+        deleteButton.disabled = loan.id == null;
+        deleteButton.addEventListener('click', () => deleteLoan(loan));
+        actions.appendChild(deleteButton);
         row.appendChild(actions);
         apiList.appendChild(row);
+    }
+}
+
+// 대출자 또는 도서명에 검색어가 들어 있는 기록만 출력
+function searchLoans() {
+    const keyword = searchInput.value.trim().toLowerCase();
+    const result = [];
+    for (const loan of allLoans) {
+        const borrower = String(loan.borrower || '').toLowerCase();
+        const title = String(loan.bookTitle || '').toLowerCase();
+        if (borrower.includes(keyword) || title.includes(keyword)) {
+            result.push(loan);
+        }
+    }
+    renderLoans(result);
+    searchMessage.textContent = `전체 ${allLoans.length}건 중 ${result.length}건 표시`;
+}
+
+// 확인창에서 승인한 기록만 서버에서 삭제하고 목록 갱신
+async function deleteLoan(loan) {
+    if (submitLoan.disabled || isDeleting) return;
+    if (!confirm(`${loan.borrower}님의 '${loan.bookTitle}' 기록을 삭제할까요?`)) return;
+
+    isDeleting = true;
+    formMessage.textContent = '삭제 중입니다...';
+    try {
+        const response = await fetch(`${API_URL}/${encodeURIComponent(loan.id)}`, {
+            method: 'DELETE'
+        });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        // 수정 중인 기록을 삭제했다면 등록 모드로 돌아가기
+        if (editingId === String(loan.id)) resetLoanForm();
+        formMessage.textContent = '대출 기록을 삭제했습니다.';
+        await checkApiConnection();
+    } catch (error) {
+        formMessage.textContent = '삭제 결과를 확인하지 못했습니다. 새로고침해 목록을 확인해 주세요.';
+        console.error('대출 삭제 오류:', error);
+    } finally {
+        isDeleting = false;
     }
 }
 
@@ -71,7 +121,8 @@ async function checkApiConnection() {
             throw new Error('목록 형식이 아닙니다.');
         }
 
-        renderLoans(loans);
+        allLoans = loans;
+        searchLoans();
         message.textContent = loans.length === 0
             ? 'MockAPI 연결 성공: 등록된 데이터가 없습니다.'
             : `MockAPI 연결 성공: 대출 기록 ${loans.length}건을 조회했습니다.`;
@@ -84,7 +135,7 @@ async function checkApiConnection() {
 // 입력값을 검사하고 등록 또는 수정을 저장하는 기능
 async function saveLoan(event) {
     event.preventDefault();
-    if (submitLoan.disabled) return;
+    if (submitLoan.disabled || isDeleting) return;
 
     // 입력값의 앞뒤 공백을 제거하고 대출 기간은 숫자로 변환
     const loan = {};
@@ -146,11 +197,13 @@ async function saveLoan(event) {
 
 // 수정 취소 버튼 기능
 cancelEdit.addEventListener('click', () => {
-    if (submitLoan.disabled) return;
+    if (submitLoan.disabled || isDeleting) return;
     resetLoanForm();
     formMessage.textContent = '수정을 취소했습니다.';
 });
 // 폼 제출 이벤트 연결
 loanForm.addEventListener('submit', saveLoan);
+// 검색어를 입력하거나 지울 때 목록 갱신
+searchInput.addEventListener('input', searchLoans);
 // 페이지를 열면 대출 목록 조회
 checkApiConnection();
