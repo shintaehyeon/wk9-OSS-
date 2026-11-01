@@ -14,7 +14,7 @@
     </nav>
     <main>
         <section>
-            <h2>대출 등록</h2>
+            <h2 id="formTitle">대출 등록</h2>
             <p>실제 개인정보 대신 가명을 입력해 주세요.</p>
             <form id="loanForm">
                 <label for="borrower">대출자</label>
@@ -31,6 +31,7 @@
                     <option value="반납완료">반납완료</option>
                 </select>
                 <button id="submitLoan" type="submit">대출 등록</button>
+                <button id="cancelEdit" type="button" hidden>수정 취소</button>
                 <p id="formMessage" role="status"></p>
             </form>
         </section>
@@ -42,7 +43,7 @@
                 <table>
                     <caption>도서 대출 기록</caption>
                     <thead>
-                        <tr><th scope="col">ID</th><th scope="col">대출자</th><th scope="col">도서명</th><th scope="col">대출일</th><th scope="col">대출 기간(일)</th><th scope="col">반납 상태</th></tr>
+                        <tr><th scope="col">ID</th><th scope="col">대출자</th><th scope="col">도서명</th><th scope="col">대출일</th><th scope="col">대출 기간(일)</th><th scope="col">반납 상태</th><th scope="col">작업</th></tr>
                     </thead>
                     <tbody id="apiList"></tbody>
                 </table>
